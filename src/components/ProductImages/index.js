@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import LightBox from './LightBox';
 import { productImages, productThumbnails } from './static';
+import useWindowSize from './useWindowSize';
+import { MIN_LARGE_SCREEN_SIZE } from '../../constants';
 
 const ProductImages = () => {
   const [mainImage, setMainImage] = useState('');
   const [thumbNails, setThumbNails] = useState([]);
+  const [isLightBoxDisplayed, setIsLightBoxDisplayed] = useState(false);
+  const windowSize = useWindowSize();
 
   useEffect(() => {
     setMainImage(productImages[0]);
@@ -30,7 +35,12 @@ const ProductImages = () => {
 
   return (
     <div style={{ border: 'solid red' }}>
-      <img src={mainImage} alt='' />
+      <button
+        onClick={() => setIsLightBoxDisplayed(true)}
+        disabled={windowSize < MIN_LARGE_SCREEN_SIZE}
+      >
+        <img src={mainImage} alt='' />
+      </button>
       <button value='prev' onClick={handleScroll}>
         <img src='./assets/images/icon-previous.svg' alt='' />
       </button>
@@ -45,6 +55,14 @@ const ProductImages = () => {
           <img src={thumbNail} alt='' />
         </button>
       ))}
+      {isLightBoxDisplayed && (
+        <LightBox
+          image={mainImage}
+          handleScroll={handleScroll}
+          open={() => setIsLightBoxDisplayed(true)}
+          close={() => setIsLightBoxDisplayed(false)}
+        />
+      )}
     </div>
   );
 };

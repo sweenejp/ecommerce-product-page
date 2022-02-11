@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Cart from '../Cart';
-import MobileMenu from '../MobileMenu';
+import Cart from './Cart';
+import MobileMenu from './MobileMenu';
 
 const Header = () => {
   const [isMobileMenuDisplayed, setIsMobileMenuDisplayed] = useState(false);
