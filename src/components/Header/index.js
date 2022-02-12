@@ -37,7 +37,13 @@ const Header = () => {
       {isMobileMenuDisplayed && (
         <MobileMenu close={() => setIsMobileMenuDisplayed(false)} />
       )}
-      {isCartDisplayed && <Cart />}
+      {isCartDisplayed && (
+        <Cart
+          close={() => {
+            setIsCartDisplayed(false);
+          }}
+        />
+      )}
     </header>
   );
 };

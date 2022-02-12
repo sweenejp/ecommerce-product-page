@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useGlobalContext } from '../../context';
 import ProductImages from '../ProductImages';
 import { productStatic } from './static';
-import { discountAndFormatPrice, toPercent } from '../../utils';
+import { discountAndFormatPrice, toPercent } from '../utils';
 
 const Product = () => {
   const [product, setProduct] = useState({});

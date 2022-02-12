@@ -1,12 +1,13 @@
 import React from 'react';
 import { useGlobalContext } from '../context';
-import { discountAndFormatPrice } from '../utils';
+import { discountAndFormatPrice } from './utils';
 
-const Cart = () => {
+const Cart = ({ close }) => {
   const { cart, cartTotalPrice, cartTotalItems, removeFromCart } =
     useGlobalContext();
   return (
     <div>
+      <button onClick={close}>X</button>
       <h3>Cart</h3>
       {cart.map(({ price, discount, amount, id, thumbNails, name }) => {
         const itemTotal = (price * discount * amount).toFixed(2);
