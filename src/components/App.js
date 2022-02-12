@@ -1,14 +1,17 @@
 import React from 'react';
+import { GlobalProvider } from '../context';
 import GlobalStyles from '../GlobalStyles';
 import Header from './Header';
-import ProductImages from './ProductImages';
+import Product from './Product';
 
 const App = () => {
   return (
     <>
-      <GlobalStyles />
-      <Header />
-      <ProductImages />
+      <GlobalProvider>
+        <GlobalStyles />
+        <Header />
+        <Product />
+      </GlobalProvider>
     </>
   );
 };

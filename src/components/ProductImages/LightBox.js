@@ -1,7 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const LightBox = ({ image, handleScroll, open, close }) => {
+const LightBox = ({ image, handleScroll, close, isDisabled }) => {
+  if (isDisabled) {
+    return <></>;
+  }
   return (
     <Wrapper>
       <div className='overlay' onClick={close}></div>

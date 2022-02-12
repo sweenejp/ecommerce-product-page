@@ -1,34 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import LightBox from './LightBox';
-import { productImages, productThumbnails } from './static';
 import useWindowSize from './useWindowSize';
 import { MIN_LARGE_SCREEN_SIZE } from '../../constants';
 
-const ProductImages = () => {
-  const [mainImage, setMainImage] = useState('');
-  const [thumbNails, setThumbNails] = useState([]);
+const ProductImages = ({ images = [], thumbNails = [] }) => {
+  const [displayedImage, setDisplayedImage] = useState('');
   const [isLightBoxDisplayed, setIsLightBoxDisplayed] = useState(false);
   const windowSize = useWindowSize();
 
   useEffect(() => {
-    setMainImage(productImages[0]);
-    setThumbNails(productThumbnails);
-  }, []);
+    setDisplayedImage(images[0]);
+  }, [images]);
 
   const handleScroll = (e) => {
     const { value } = e.currentTarget;
-    const index = productImages.indexOf(mainImage);
+    const index = images.indexOf(displayedImage);
     if (value === 'prev') {
       if (index === 0) {
-        setMainImage(productImages[productImages.length - 1]);
+        setDisplayedImage(images[images.length - 1]);
       } else {
-        setMainImage(productImages[index - 1]);
+        setDisplayedImage(images[index - 1]);
       }
     } else {
-      if (index === productImages.length - 1) {
-        setMainImage(productImages[0]);
+      if (index === images.length - 1) {
+        setDisplayedImage(images[0]);
       } else {
-        setMainImage(productImages[index + 1]);
+        setDisplayedImage(images[index + 1]);
       }
     }
   };
@@ -39,7 +36,7 @@ const ProductImages = () => {
         onClick={() => setIsLightBoxDisplayed(true)}
         disabled={windowSize < MIN_LARGE_SCREEN_SIZE}
       >
-        <img src={mainImage} alt='' />
+        <img src={displayedImage} alt='' />
       </button>
       <button value='prev' onClick={handleScroll}>
         <img src='./assets/images/icon-previous.svg' alt='' />
@@ -50,14 +47,15 @@ const ProductImages = () => {
       {thumbNails.map((thumbNail, index) => (
         <button
           key={thumbNail}
-          onClick={() => setMainImage(productImages[index])}
+          onClick={() => setDisplayedImage(images[index])}
         >
           <img src={thumbNail} alt='' />
         </button>
       ))}
       {isLightBoxDisplayed && (
         <LightBox
-          image={mainImage}
+          isDisabled={windowSize < MIN_LARGE_SCREEN_SIZE}
+          image={displayedImage}
           handleScroll={handleScroll}
           open={() => setIsLightBoxDisplayed(true)}
           close={() => setIsLightBoxDisplayed(false)}

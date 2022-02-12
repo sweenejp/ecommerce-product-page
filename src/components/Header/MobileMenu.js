@@ -1,4 +1,5 @@
 import React from 'react';
+import Nav from './Nav';
 
 const MobileMenu = ({ close }) => {
   return (
@@ -6,13 +7,7 @@ const MobileMenu = ({ close }) => {
       <button onClick={close}>
         <img src='./assets/images/icon-close.svg' alt='close' />
       </button>
-      <ul>
-        <li>Collections</li>
-        <li>Men</li>
-        <li>Women</li>
-        <li>About</li>
-        <li>Contact</li>
-      </ul>
+      <Nav />
     </div>
   );
 };

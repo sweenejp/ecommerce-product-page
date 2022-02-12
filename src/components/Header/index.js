@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
-import Cart from './Cart';
+import { useGlobalContext } from '../../context';
+import Cart from '../Cart';
 import MobileMenu from './MobileMenu';
+import Nav from './Nav';
 
 const Header = () => {
   const [isMobileMenuDisplayed, setIsMobileMenuDisplayed] = useState(false);
   const [isCartDisplayed, setIsCartDisplayed] = useState(false);
+  const { cartTotalItems } = useGlobalContext();
 
   const toggleMobileMenu = () => {
     setIsMobileMenuDisplayed((prev) => !prev);
@@ -21,8 +24,12 @@ const Header = () => {
       <a href='/'>
         <img src='./assets/images/logo.svg' alt='' />
       </a>
+      <Nav />
       <button onClick={toggleCart}>
-        <img src='./assets/images/icon-cart.svg' alt='' />
+        <div>
+          <img src='./assets/images/icon-cart.svg' alt='' />
+          {cartTotalItems !== 0 && <p>{cartTotalItems}</p>}
+        </div>
       </button>
       <button>
         <img src='./assets/images/image-avatar.png' alt='' />
