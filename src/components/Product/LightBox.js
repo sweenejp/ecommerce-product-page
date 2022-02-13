@@ -2,13 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import Overlay from '../Overlay';
 
-const LightBox = ({ image, handleScroll, close, isDisabled }) => {
+const LightBox = ({ image, handleScroll, close, isOpen, isDisabled }) => {
   if (isDisabled) {
     return <></>;
   }
   return (
     <Wrapper>
-      <Overlay close={close} />
+      <Overlay isOverlay={isOpen} close={close} />
       <div className='image-container'>
         <img src={image} alt='' />
         <button value='prev' onClick={handleScroll}>
@@ -28,7 +28,7 @@ const Wrapper = styled.div`
     top: 50px;
     right: 50px;
     left: 50px;
-    z-index: 2;
+    z-index: 3;
     border: solid purple;
   }
 `;

@@ -6,6 +6,6 @@ export const LargeButton = styled.button`
   text-align: center;
   font-weight: 600;
   border-radius: 5px;
-  background-color: orange;
+  background-color: ${({ theme }) => theme.colors.orange};
   color: white;
 `;

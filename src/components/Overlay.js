@@ -1,19 +1,21 @@
 import React from 'react';
+import styled from 'styled-components';
 
 const Overlay = ({ isOverlay, close }) => {
-  const styles = {
-    position: 'fixed',
-    top: 0,
-    bottom: 0,
-    left: 0,
-    right: 0,
-    backgroundColor: 'rgba(0, 0, 0, 0.4)',
-    zIndex: 1,
-  };
   if (!isOverlay) {
     return <></>;
   }
-  return <div onClick={close} style={styles}></div>;
+  return <StyledOverlay onClick={close}></StyledOverlay>;
 };
+
+const StyledOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: ${({ theme }) => theme.colors.lightbox};
+  z-index: 1;
+`;
 
 export default Overlay;

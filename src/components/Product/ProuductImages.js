@@ -54,6 +54,7 @@ const ProductImages = ({ images = [], thumbNails = [] }) => {
       ))}
       {isLightBoxDisplayed && (
         <LightBox
+          isOpen={isLightBoxDisplayed}
           isDisabled={windowSize < MIN_LARGE_SCREEN_SIZE}
           image={displayedImage}
           handleScroll={handleScroll}

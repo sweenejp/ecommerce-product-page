@@ -6,6 +6,10 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
   }
 
+  body {
+    font-family: 'Kumbh Sans', sans-serif;
+  }
+
   img {
     display: block;
     width: 100%;
