@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import LightBox from './LightBox';
-import useWindowSize from './useWindowSize';
+import useWindowSize from '../useWindowSize';
 import { MIN_LARGE_SCREEN_SIZE } from '../../constants';
 
 const ProductImages = ({ images = [], thumbNails = [] }) => {

@@ -1,8 +1,9 @@
 import React from 'react';
+import { StyledNav } from './styles';
 
 const Nav = () => {
   return (
-    <nav>
+    <StyledNav>
       <ul>
         <li>Collections</li>
         <li>Men</li>
@@ -10,7 +11,7 @@ const Nav = () => {
         <li>About</li>
         <li>Contact</li>
       </ul>
-    </nav>
+    </StyledNav>
   );
 };
 

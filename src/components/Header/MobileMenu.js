@@ -1,14 +1,19 @@
 import React from 'react';
+import Overlay from '../Overlay';
 import Nav from './Nav';
+import { StyledMobileMenu } from './styles';
 
-const MobileMenu = ({ close }) => {
+const MobileMenu = ({ close, isOpen }) => {
   return (
-    <div>
-      <button onClick={close}>
-        <img src='./assets/images/icon-close.svg' alt='close' />
-      </button>
-      <Nav />
-    </div>
+    <>
+      <Overlay isOverlay={isOpen} close={close} />
+      <StyledMobileMenu isOpen={isOpen}>
+        <button className='close-btn' onClick={close}>
+          <img src='./assets/images/icon-close.svg' alt='close' />
+        </button>
+        <Nav />
+      </StyledMobileMenu>
+    </>
   );
 };
 

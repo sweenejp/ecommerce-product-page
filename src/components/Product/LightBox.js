@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Overlay from '../Overlay';
 
 const LightBox = ({ image, handleScroll, close, isDisabled }) => {
   if (isDisabled) {
@@ -7,7 +8,7 @@ const LightBox = ({ image, handleScroll, close, isDisabled }) => {
   }
   return (
     <Wrapper>
-      <div className='overlay' onClick={close}></div>
+      <Overlay close={close} />
       <div className='image-container'>
         <img src={image} alt='' />
         <button value='prev' onClick={handleScroll}>
@@ -22,16 +23,6 @@ const LightBox = ({ image, handleScroll, close, isDisabled }) => {
 };
 
 const Wrapper = styled.div`
-  .overlay {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: rgba(0, 0, 0, 0.4);
-    z-index: 1;
-  }
-
   .image-container {
     position: fixed;
     top: 50px;
