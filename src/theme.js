@@ -1,3 +1,4 @@
+import { MIN_LARGE_SCREEN_SIZE } from './constants';
 export const theme = {
   colors: {
     orange: 'hsl(26, 100%, 55%)',
@@ -9,5 +10,8 @@ export const theme = {
     white: 'hsl(0, 0%, 100%)',
     black: 'hsl(0, 0%, 0%)',
     lightbox: 'rgba(0, 0, 0, 0.75)',
+  },
+  media: {
+    minLarge: `${MIN_LARGE_SCREEN_SIZE}px`,
   },
 };

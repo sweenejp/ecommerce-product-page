@@ -4,6 +4,7 @@ const GlobalStyles = createGlobalStyle`
   *, ::before, ::after {
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
   }
 
   body {
@@ -13,6 +14,10 @@ const GlobalStyles = createGlobalStyle`
   img {
     display: block;
     width: 100%;
+  }
+  
+  a {
+    text-decoration: none;
   }
 
   button {

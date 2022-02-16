@@ -6,9 +6,9 @@ export const StyledHeader = styled.header`
   justify-content: space-between;
   padding: 1rem;
   align-items: center;
-  position: fixed;
+  position: sticky;
+  top: 0;
   left: 0;
-  right: 0;
 
   .nav-section,
   .user-section {
@@ -17,10 +17,6 @@ export const StyledHeader = styled.header`
 
   .nav-toggle {
     margin-right: 1rem;
-
-    @media (min-width: 700px) {
-      display: none;
-    }
   }
 
   .large-nav {
@@ -28,12 +24,16 @@ export const StyledHeader = styled.header`
   }
 
   .avatar {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+
+    :hover {
+      outline: solid 2px ${({ theme }) => theme.colors.orange};
+    }
   }
 
   .cart-button {
-    position: relative;
     margin-right: 1rem;
   }
 
@@ -42,21 +42,33 @@ export const StyledHeader = styled.header`
     display: flex;
     align-items: center;
     justify-content: center;
-    top: -0.5rem;
-    right: -0.2rem;
-    border-radius: 50%;
-    font-size: 0.8rem;
-    font-weight: 600;
+    top: -0.1rem;
+    right: -0.5rem;
+    border-radius: 10px;
+    font-size: 0.7rem;
+    font-weight: 700;
     line-height: 1;
-    width: 1rem;
-    height: 1rem;
-    background: black;
-    color: white;
+    height: 0.9rem;
+    padding: 0 0.25rem;
+    background: ${({ theme }) => theme.colors.orange};
+    color: ${({ theme }) => theme.colors.white};
   }
 
-  @media (min-width: 700px) {
+  @media (min-width: ${({ theme }) => theme.media.minLarge}) {
+    padding-bottom: 2.5rem;
+    border-bottom: solid 1px ${({ theme }) => theme.colors.lightGrayBlue};
+    position: static;
+
     .large-nav {
       display: block;
+    }
+
+    .nav-toggle {
+      display: none;
+    }
+
+    .user-section {
+      position: relative;
     }
   }
 `;
@@ -77,7 +89,7 @@ export const StyledMobileMenu = styled.div`
     margin-bottom: 2rem;
   }
 
-  @media (min-width: 700px) {
+  @media (min-width: ${({ theme }) => theme.media.minLarge}) {
     nav {
       display: none;
     }
@@ -137,6 +149,12 @@ export const StyledCart = styled.div`
   .total {
     margin: 1rem 0;
   }
+
+  @media (min-width: ${({ theme }) => theme.media.minLarge}) {
+    width: 350px;
+    left: initial;
+    /* right: 2rem; */
+  }
 `;
 
 export const StyledNav = styled.nav`
@@ -144,11 +162,42 @@ export const StyledNav = styled.nav`
     display: flex;
     flex-direction: column;
     gap: 1rem;
+  }
 
-    @media (min-width: 700px) {
+  a {
+    position: relative;
+  }
+
+  li {
+    font-weight: 700;
+    color: ${({ theme }) => theme.colors.grayBlue};
+
+    ::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      height: 3px;
+      width: 100%;
+      background-color: ${({ theme }) => theme.colors.orange};
+      top: 68px;
+      transform: scaleX(0);
+      transition: transform 200ms ease-in-out;
+    }
+
+    :hover {
+      color: ${({ theme }) => theme.colors.darkGrayBlue};
+    }
+  }
+
+  @media (min-width: ${({ theme }) => theme.media.minLarge}) {
+    ul {
       flex-direction: row;
       align-items: center;
       margin-left: 2rem;
+    }
+
+    li:hover::after {
+      transform: scaleX(1);
     }
   }
 `;

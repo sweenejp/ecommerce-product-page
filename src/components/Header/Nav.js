@@ -5,11 +5,21 @@ const Nav = () => {
   return (
     <StyledNav>
       <ul>
-        <li>Collections</li>
-        <li>Men</li>
-        <li>Women</li>
-        <li>About</li>
-        <li>Contact</li>
+        <a href='/'>
+          <li>Collections</li>
+        </a>
+        <a href='/'>
+          <li>Men</li>
+        </a>
+        <a href='/'>
+          <li>Women</li>
+        </a>
+        <a href='/'>
+          <li>About</li>
+        </a>
+        <a href='/'>
+          <li>Contact</li>
+        </a>
       </ul>
     </StyledNav>
   );
