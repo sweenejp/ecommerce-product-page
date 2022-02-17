@@ -15,7 +15,7 @@ const StyledOverlay = styled.div`
   left: 0;
   right: 0;
   background-color: ${({ theme }) => theme.colors.lightbox};
-  z-index: 1;
+  z-index: 997;
 `;
 
 export default Overlay;

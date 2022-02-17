@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import LightBox from './LightBox';
 import useWindowSize from '../useWindowSize';
+import { StyledProductImages } from './styles';
+import ArrowButton from './ArrowButton';
 import { MIN_LARGE_SCREEN_SIZE } from '../../constants';
 
 const ProductImages = ({ images = [], thumbNails = [] }) => {
@@ -31,27 +33,33 @@ const ProductImages = ({ images = [], thumbNails = [] }) => {
   };
 
   return (
-    <div style={{ border: 'solid red' }}>
-      <button
-        onClick={() => setIsLightBoxDisplayed(true)}
-        disabled={windowSize < MIN_LARGE_SCREEN_SIZE}
-      >
-        <img src={displayedImage} alt='' />
-      </button>
-      <button value='prev' onClick={handleScroll}>
-        <img src='./assets/images/icon-previous.svg' alt='' />
-      </button>
-      <button value='next' onClick={handleScroll}>
-        <img src='./assets/images/icon-next.svg' alt='' />
-      </button>
-      {thumbNails.map((thumbNail, index) => (
+    <StyledProductImages>
+      <div className='displayed-image-container'>
         <button
-          key={thumbNail}
-          onClick={() => setDisplayedImage(images[index])}
+          className='displayed-image-btn'
+          onClick={() => setIsLightBoxDisplayed(true)}
+          disabled={windowSize < MIN_LARGE_SCREEN_SIZE}
         >
-          <img src={thumbNail} alt='' />
+          <img src={displayedImage} alt='' />
         </button>
-      ))}
+        <div className='arrow-btn-container arrow-btn-container--left'>
+          <ArrowButton value='prev' handleClick={handleScroll}></ArrowButton>
+        </div>
+        <div className='arrow-btn-container arrow-btn-container--right'>
+          <ArrowButton value='next' handleClick={handleScroll}></ArrowButton>
+        </div>
+      </div>
+      <div className='thumbnails'>
+        {thumbNails.map((thumbNail, index) => (
+          <button
+            className='thumbnail'
+            key={thumbNail}
+            onClick={() => setDisplayedImage(images[index])}
+          >
+            <img src={thumbNail} alt='' />
+          </button>
+        ))}
+      </div>
       {isLightBoxDisplayed && (
         <LightBox
           isOpen={isLightBoxDisplayed}
@@ -62,7 +70,7 @@ const ProductImages = ({ images = [], thumbNails = [] }) => {
           close={() => setIsLightBoxDisplayed(false)}
         />
       )}
-    </div>
+    </StyledProductImages>
   );
 };
 

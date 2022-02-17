@@ -9,6 +9,7 @@ export const StyledHeader = styled.header`
   position: sticky;
   top: 0;
   left: 0;
+  z-index: 996;
 
   .nav-section,
   .user-section {
@@ -81,7 +82,7 @@ export const StyledMobileMenu = styled.div`
   background-color: white;
   padding: 1rem;
   width: 250px;
-  z-index: 3;
+  z-index: 999;
   transform: ${({ isOpen }) => (isOpen ? 'translate(0)' : 'translate(-500px)')};
   transition: transform 200ms ease-in-out;
 

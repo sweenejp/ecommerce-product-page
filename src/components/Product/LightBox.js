@@ -1,36 +1,26 @@
 import React from 'react';
-import styled from 'styled-components';
 import Overlay from '../Overlay';
+import ArrowButton from './ArrowButton';
+import { StyledLightBox } from './styles';
 
 const LightBox = ({ image, handleScroll, close, isOpen, isDisabled }) => {
   if (isDisabled) {
     return <></>;
   }
   return (
-    <Wrapper>
+    <StyledLightBox>
       <Overlay isOverlay={isOpen} close={close} />
       <div className='image-container'>
         <img src={image} alt='' />
-        <button value='prev' onClick={handleScroll}>
-          <img src='./assets/images/icon-previous.svg' alt='' />
-        </button>
-        <button value='next' onClick={handleScroll}>
-          <img src='./assets/images/icon-next.svg' alt='' />
-        </button>
+        <div className='lightbox-arrow-btn-container lightbox-arrow-btn-container--left'>
+          <ArrowButton handleClick={handleScroll} value='prev' />
+        </div>
+        <div className='lightbox-arrow-btn-container lightbox-arrow-btn-container--right'>
+          <ArrowButton handleClick={handleScroll} value='next' />
+        </div>
       </div>
-    </Wrapper>
+    </StyledLightBox>
   );
 };
-
-const Wrapper = styled.div`
-  .image-container {
-    position: fixed;
-    top: 50px;
-    right: 50px;
-    left: 50px;
-    z-index: 3;
-    border: solid purple;
-  }
-`;
 
 export default LightBox;
