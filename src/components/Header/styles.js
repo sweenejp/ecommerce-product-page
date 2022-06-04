@@ -105,7 +105,7 @@ export const StyledCart = styled.div`
   transform: translateY(60px);
 
   border-radius: 10px;
-  padding: 1rem 1rem 1.5rem 1rem;
+  padding: 1.5rem 1.5rem 2rem 1.5rem;
   background: white;
   -webkit-box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.4);
   box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.4);
@@ -119,11 +119,17 @@ export const StyledCart = styled.div`
       content: '';
       position: absolute;
       left: 0;
-      top: 3.5rem;
+      top: 4rem;
       height: 1px;
       width: 100%;
       background-color: rgba(0, 0, 0, 0.2);
     }
+  }
+
+  .modal-contents {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
   }
 
   .item {
@@ -147,8 +153,13 @@ export const StyledCart = styled.div`
     }
   }
 
-  .total {
-    margin: 1rem 0;
+  .total-empty {
+    padding: 6rem 0;
+    text-align: center;
+  }
+
+  .text-center {
+    text-align: center;
   }
 
   @media (min-width: ${({ theme }) => theme.media.minLarge}) {
