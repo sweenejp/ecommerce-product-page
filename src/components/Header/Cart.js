@@ -16,12 +16,12 @@ const Cart = ({ close }) => {
         </button>
       </div>
       <div className="modal-contents">
-        {cart.map(({ price, discount, amount, id, thumbNails, name }) => {
+        {cart.map(({ price, discount, amount, id, thumbnails, name }) => {
           const itemTotal = (price * discount * amount).toFixed(2);
           return (
             <div className="item" key={id}>
               <div className="item-main">
-                <img className="thumbnail" src={thumbNails[0]} alt="" />
+                <img className="thumbnail" src={thumbnails[0]} alt="" />
                 <div>
                   <p>{name}</p>
                   <p>

@@ -1,18 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import LightBox from './LightBox';
 import useWindowSize from '../useWindowSize';
-import { StyledProductImages } from './styles';
+import { StyledProductImages, Thumbnail } from './styles';
 import ArrowButton from './ArrowButton';
 import { MIN_LARGE_SCREEN_SIZE } from '../../constants';
 
-const ProductImages = ({ images = [], thumbNails = [] }) => {
-  const [displayedImage, setDisplayedImage] = useState('');
+const ProductImages = ({ images = [], thumbnails = [] }) => {
+  const [displayedImage, setDisplayedImage] = useState(images[0]);
+  const [selectedThumbnail, setSelectedThumbnail] = useState(thumbnails[0]);
   const [isLightBoxDisplayed, setIsLightBoxDisplayed] = useState(false);
   const windowSize = useWindowSize();
-
-  useEffect(() => {
-    setDisplayedImage(images[0]);
-  }, [images]);
 
   const handleScroll = (e) => {
     const { value } = e.currentTarget;
@@ -32,32 +29,38 @@ const ProductImages = ({ images = [], thumbNails = [] }) => {
     }
   };
 
+  const handleThumbnailClick = (index) => {
+    setSelectedThumbnail(thumbnails[index]);
+    setDisplayedImage(images[index]);
+  };
+
   return (
     <StyledProductImages>
-      <div className='displayed-image-container'>
+      <div className="displayed-image-container">
         <button
-          className='displayed-image-btn'
+          className="displayed-image-btn"
           onClick={() => setIsLightBoxDisplayed(true)}
           disabled={windowSize < MIN_LARGE_SCREEN_SIZE}
         >
-          <img src={displayedImage} alt='' />
+          <img src={displayedImage} alt="" />
         </button>
-        <div className='arrow-btn-container arrow-btn-container--left'>
-          <ArrowButton value='prev' handleClick={handleScroll}></ArrowButton>
+        <div className="arrow-btn-container arrow-btn-container--left">
+          <ArrowButton value="prev" handleClick={handleScroll}></ArrowButton>
         </div>
-        <div className='arrow-btn-container arrow-btn-container--right'>
-          <ArrowButton value='next' handleClick={handleScroll}></ArrowButton>
+        <div className="arrow-btn-container arrow-btn-container--right">
+          <ArrowButton value="next" handleClick={handleScroll}></ArrowButton>
         </div>
       </div>
-      <div className='thumbnails'>
-        {thumbNails.map((thumbNail, index) => (
-          <button
-            className='thumbnail'
-            key={thumbNail}
-            onClick={() => setDisplayedImage(images[index])}
+      <div className="thumbnails">
+        {thumbnails.map((thumbnail, index) => (
+          <Thumbnail
+            className="thumbnail"
+            $selected={thumbnail === selectedThumbnail}
+            key={thumbnail}
+            onClick={() => handleThumbnailClick(index)}
           >
-            <img src={thumbNail} alt='' />
-          </button>
+            <img src={thumbnail} alt="" />
+          </Thumbnail>
         ))}
       </div>
       {isLightBoxDisplayed && (

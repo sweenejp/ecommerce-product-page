@@ -12,7 +12,7 @@ export const productStatic = {
     './assets/images/image-product-3.jpg',
     './assets/images/image-product-4.jpg',
   ],
-  thumbNails: [
+  thumbnails: [
     './assets/images/image-product-1-thumbnail.jpg',
     './assets/images/image-product-2-thumbnail.jpg',
     './assets/images/image-product-3-thumbnail.jpg',

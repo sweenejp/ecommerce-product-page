@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { css } from 'styled-components';
 import { LargeButton } from '../shared-styles/LargeButton';
 
 export const StyledProductImages = styled.div`
@@ -47,12 +48,19 @@ export const StyledProductImages = styled.div`
       display: flex;
       gap: 1rem;
     }
-
-    .thumbnail {
-      border-radius: 10px;
-      overflow: hidden;
-    }
   }
+`;
+
+export const Thumbnail = styled.button`
+  border-radius: 10px;
+  overflow: hidden;
+  ${({ $selected: selected, theme }) =>
+    selected
+      ? css`
+          box-shadow: 0 0 0 3px ${theme.colors.orange}; // creates a border without adding width - prevents thumbnails from shifting around
+          opacity: 0.7;
+        `
+      : null};
 `;
 
 export const StyledLightBox = styled.div`
@@ -111,23 +119,23 @@ export const StyledArrowButton = styled.button`
 
 export const StyledProductMain = styled.div`
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 
   h3 {
     color: ${({ theme }) => theme.colors.orange};
     text-transform: uppercase;
     font-size: 0.8rem;
     font-weight: 700;
-    margin-bottom: 0.8rem;
   }
 
   h2 {
     color: ${({ theme }) => theme.colors.darkBlue};
-    margin-bottom: 1rem;
   }
 
   .about {
     color: ${({ theme }) => theme.colors.darkGrayBlue};
-    margin-bottom: 1rem;
   }
 
   .price-box {
@@ -177,7 +185,13 @@ export const StyledProductMain = styled.div`
 `;
 
 export const AddToCartButton = styled(LargeButton)`
-  div {
-    display: flex;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1rem;
+
+  .cart-icon {
+    width: 20px;
+    height: 20px;
   }
 `;
