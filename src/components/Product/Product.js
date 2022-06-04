@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
 import { useGlobalContext } from '../../context';
 import { productStatic } from './static';
 import { discountAndFormatPrice, toPercent } from '../utils';
@@ -35,7 +36,7 @@ const Product = () => {
   };
 
   return (
-    <>
+    <Wrapper>
       <ProductImages images={product.images} thumbnails={product.thumbnails} />
       <StyledProductMain>
         <h3>{product.company}</h3>
@@ -79,8 +80,18 @@ const Product = () => {
           </>
         </AddToCartButton>
       </StyledProductMain>
-    </>
+    </Wrapper>
   );
 };
 
+const Wrapper = styled.div`
+  @media (min-width: ${({ theme }) => theme.media.minLarge}) {
+    padding-top: 3rem;
+    max-width: 80%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 5rem;
+  }
+`;
 export default Product;

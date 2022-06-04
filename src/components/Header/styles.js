@@ -56,7 +56,7 @@ export const StyledHeader = styled.header`
   }
 
   @media (min-width: ${({ theme }) => theme.media.minLarge}) {
-    padding-bottom: 2.5rem;
+    padding-bottom: 2rem;
     border-bottom: solid 1px ${({ theme }) => theme.colors.lightGrayBlue};
     position: static;
 
@@ -191,7 +191,7 @@ export const StyledNav = styled.nav`
       height: 3px;
       width: 100%;
       background-color: ${({ theme }) => theme.colors.orange};
-      top: 68px;
+      top: 60px;
       transform: scaleX(0);
       transition: transform 200ms ease-in-out;
     }
