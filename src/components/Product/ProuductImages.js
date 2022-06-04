@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import LightBox from './LightBox';
 import useWindowSize from '../useWindowSize';
 import { StyledProductImages, Thumbnail } from './styles';
@@ -10,6 +10,11 @@ const ProductImages = ({ images = [], thumbnails = [] }) => {
   const [selectedThumbnail, setSelectedThumbnail] = useState(thumbnails[0]);
   const [isLightBoxDisplayed, setIsLightBoxDisplayed] = useState(false);
   const windowSize = useWindowSize();
+
+  useEffect(() => {
+    setDisplayedImage(images[0]);
+    setSelectedThumbnail(thumbnails[0]);
+  }, [images, thumbnails]);
 
   const handleScroll = (e) => {
     const { value } = e.currentTarget;

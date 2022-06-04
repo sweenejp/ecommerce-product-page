@@ -61,6 +61,9 @@ export const Thumbnail = styled.button`
           opacity: 0.7;
         `
       : null};
+  &:hover {
+    opacity: 0.7;
+  }
 `;
 
 export const StyledLightBox = styled.div`
@@ -195,5 +198,10 @@ export const AddToCartButton = styled(LargeButton)`
   .cart-icon {
     width: 20px;
     height: 20px;
+  }
+
+  &:hover {
+    opacity: 0.7;
+    box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.38);
   }
 `;
