@@ -35,6 +35,7 @@ export const StyledHeader = styled.header`
   }
 
   .cart-button {
+    position: relative;
     margin-right: 1rem;
   }
 
@@ -43,14 +44,13 @@ export const StyledHeader = styled.header`
     display: flex;
     align-items: center;
     justify-content: center;
-    top: -0.1rem;
-    right: -0.5rem;
+    top: 5px;
+    left: 12px;
     border-radius: 10px;
     font-size: 0.7rem;
     font-weight: 700;
-    line-height: 1;
-    height: 0.9rem;
-    padding: 0 0.25rem;
+    height: 1rem;
+    padding: 0 0.5rem;
     background: ${({ theme }) => theme.colors.orange};
     color: ${({ theme }) => theme.colors.white};
   }
