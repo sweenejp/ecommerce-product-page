@@ -1,39 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { useGlobalContext } from '../../context';
 import { productStatic } from './static';
 import { discountAndFormatPrice, toPercent } from '../utils';
 import ProductImages from './ProuductImages';
 import { StyledProductMain } from './styles';
-import { AddToCartButton } from './styles';
+import AddToCart from './AddToCart';
 
 const Product = () => {
   const [product, setProduct] = useState({});
-  const [amountToAddToCart, setAmountToAddToCart] = useState(0);
-  const { addToCart } = useGlobalContext();
 
   useEffect(() => {
     setProduct(productStatic);
   }, []);
-
-  const handleMinus = () => {
-    if (amountToAddToCart === 0) {
-      setAmountToAddToCart(0);
-    } else {
-      setAmountToAddToCart((prev) => prev - 1);
-    }
-  };
-
-  const handlePlus = () => {
-    setAmountToAddToCart((prev) => prev + 1);
-  };
-
-  const handleAddToCart = () => {
-    if (amountToAddToCart > 0) {
-      addToCart(product, amountToAddToCart);
-      setAmountToAddToCart(0);
-    }
-  };
 
   return (
     <Wrapper>
@@ -60,25 +38,7 @@ const Product = () => {
             )}
           </div>
         </div>
-        <div className="counter">
-          <button value="minus" onClick={handleMinus}>
-            <img src="./assets/images/icon-minus.svg" alt="" />
-          </button>
-          <p>{amountToAddToCart}</p>
-          <button value="plus" onClick={handlePlus}>
-            <img src="./assets/images/icon-plus.svg" alt="" />
-          </button>
-        </div>
-        <AddToCartButton onClick={handleAddToCart}>
-          <>
-            <img
-              className="cart-icon"
-              src="./assets/images/icon-cart.svg"
-              alt=""
-            />
-            <p>Add to cart</p>
-          </>
-        </AddToCartButton>
+        <AddToCart product={product} />
       </StyledProductMain>
     </Wrapper>
   );

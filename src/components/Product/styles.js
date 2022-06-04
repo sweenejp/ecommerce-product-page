@@ -173,20 +173,6 @@ export const StyledProductMain = styled.div`
       color: ${({ theme }) => theme.colors.grayBlue};
     }
   }
-
-  .counter {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    background-color: ${({ theme }) => theme.colors.lightGrayBlue};
-    border-radius: 5px;
-    height: 2.5rem;
-
-    button {
-      padding: 0.75rem;
-    }
-  }
 `;
 
 export const AddToCartButton = styled(LargeButton)`
