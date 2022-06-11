@@ -1,15 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
+import { MinusIcon, PlusIcon } from '../icons';
 
 const Counter = ({ onMinusClick, onPlusClick, amount }) => {
   return (
     <Wrapper>
-      <button value="minus" onClick={onMinusClick}>
-        <img src="./assets/images/icon-minus.svg" alt="" />
+      <button onClick={onMinusClick}>
+        <MinusIcon />
       </button>
       <p>{amount}</p>
-      <button value="plus" onClick={onPlusClick}>
-        <img src="./assets/images/icon-plus.svg" alt="" />
+      <button onClick={onPlusClick}>
+        <PlusIcon />
       </button>
     </Wrapper>
   );
@@ -26,6 +27,7 @@ const Wrapper = styled.div`
 
   button {
     padding: 0.75rem;
+    color: ${({ theme }) => theme.colors.orange};
   }
 `;
 export default Counter;

@@ -1,0 +1,9 @@
+export { default as CartIcon } from './Cart';
+export { default as CloseIcon } from './Close';
+export { default as LogoIcon } from './Logo';
+export { default as MinusIcon } from './Minus';
+export { default as MobileMenuIcon } from './MobileMenu';
+export { default as NextIcon } from './Next';
+export { default as PlusIcon } from './Plus';
+export { default as PreviousIcon } from './Previous';
+export { default as TrashIcon } from './Trash';

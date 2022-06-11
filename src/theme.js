@@ -1,5 +1,5 @@
-import { MIN_LARGE_SCREEN_SIZE } from './constants';
-export const theme = {
+/* eslint-disable no-use-before-define */
+const theme = {
   colors: {
     orange: 'hsl(26, 100%, 55%)',
     paleOrange: 'hsl(25, 100%, 94%)',
@@ -12,6 +12,11 @@ export const theme = {
     lightbox: 'rgba(0, 0, 0, 0.75)',
   },
   media: {
-    minLarge: `${MIN_LARGE_SCREEN_SIZE}px`,
+    minLarge: 1040,
+  },
+  mediaQueries: {
+    minLarge: `(min-width: 1040px)`,
   },
 };
+
+export { theme };
